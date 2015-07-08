@@ -7,35 +7,35 @@ public class Tokenize {
 
 	public static void main(String args[]) {
 
-		List<Integer> numOfWordsInEachTweet = new ArrayList<>();
-		
+		/** THIS IS TASK 1 */
 		// Read input file
 		File file = new File(
 				"/Users/CharlesGao/Projects/cc-example/tweet_input/tweets.txt");
 		// Use a TreeSet<String> which will automatically sort the words
 		// in alphabetical order
-//		Set<String> wordsInTweet = new TreeSet<>();
-//		try {
-//			Scanner tokenizeScanner = new Scanner(new FileReader(file));
-//			tokenizeScanner.useDelimiter(" ");
-//			while (tokenizeScanner.hasNext()) {
-//				String singleWordInTweet = tokenizeScanner.next();
-//				if (!singleWordInTweet.equals("")) {
-//					// process only non-empty strings
-//					// convert to lowercase and then add to the set
-//					wordsInTweet.add(singleWordInTweet.toLowerCase());
-//				}
-//			}
-//			// Now wordsInTweet are in alphabetical order without duplicates,
-//			// print the wordsInTweet separating them in lines
-//			for (String eachWord : wordsInTweet) {
-//				System.out.print(eachWord + "\r\n");
-//			}
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+		// Set<String> wordsInTweet = new TreeSet<>();
+		// try {
+		// Scanner tokenizeScanner = new Scanner(new FileReader(file));
+		// tokenizeScanner.useDelimiter(" ");
+		// while (tokenizeScanner.hasNext()) {
+		// String singleWordInTweet = tokenizeScanner.next();
+		// if (!singleWordInTweet.equals("")) {
+		// // process only non-empty strings
+		// // convert to lowercase and then add to the set
+		// wordsInTweet.add(singleWordInTweet.toLowerCase());
+		// }
+		// }
+		// // Now wordsInTweet are in alphabetical order without duplicates,
+		// // print the wordsInTweet separating them in lines
+		// for (String eachWord : wordsInTweet) {
+		// System.out.print(eachWord + "\r\n");
+		// }
+		// } catch (Exception e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+
+		/** THIS IS TASK 2 */
 		List<String> Tweets = new ArrayList<>();
 		try {
 			Scanner singleTweetScanner = new Scanner(new FileReader(file));
@@ -48,7 +48,7 @@ public class Tokenize {
 			for (String eachTweet : Tweets) {
 				Scanner singleTweet = new Scanner(eachTweet);
 				singleTweet.useDelimiter(" ");
-				while (singleTweet.hasNext()){
+				while (singleTweet.hasNext()) {
 					wordsInSingleTweet.add(singleTweet.next());
 				}
 				wordsInSingleTweet.size();
@@ -59,7 +59,6 @@ public class Tokenize {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
 
