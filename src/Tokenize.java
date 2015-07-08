@@ -7,6 +7,8 @@ public class Tokenize {
 
 	public static void main(String args[]) {
 
+		List<Integer> numOfWordsInEachTweet = new ArrayList<>();
+		
 		// Read input file
 		File file = new File(
 				"/Users/CharlesGao/Projects/cc-example/tweet_input/tweets.txt");
@@ -41,10 +43,17 @@ public class Tokenize {
 			while (singleTweetScanner.hasNext()) {
 				String singleTweet = singleTweetScanner.next();
 				Tweets.add(singleTweet);
-				
 			}
+			Set<String> wordsInSingleTweet = new TreeSet<>();
 			for (String eachTweet : Tweets) {
-				System.out.print(eachTweet + "\r\n");
+				Scanner singleTweet = new Scanner(eachTweet);
+				singleTweet.useDelimiter(" ");
+				while (singleTweet.hasNext()){
+					wordsInSingleTweet.add(singleTweet.next());
+				}
+				wordsInSingleTweet.size();
+				System.out.println(wordsInSingleTweet.size());
+				wordsInSingleTweet.clear();
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
