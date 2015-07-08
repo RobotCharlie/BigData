@@ -1,7 +1,10 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.*;
+
+/**
+ * @author CharlesGao Function: This is a class that including the main frame of
+ *         TASK 1 & TASK 2.
+ */
 
 public class Task {
 
@@ -9,7 +12,7 @@ public class Task {
 
 		// Read input file
 		File file = new File(
-				"/Users/CharlesGao/Projects/cc-example/tweet_input/tweets.txt");
+				"/Users/CharlesGao/Projects/cc/Insight Data Engineering - Coding Challenge/tweet_input/tweets.txt");
 
 		/** THIS IS TASK 1 */
 
@@ -60,11 +63,19 @@ public class Task {
 					wordsInSingleTweet.add(singleTweet.next());
 				}
 				// Pass and save the size of each tweet to a ArrayList in {@link
-				// TaskTwoHelper}
-				new TaskTwoHelper(wordsInSingleTweet.size());
-				TaskTwoHelper.calculateMedian();
+				// TaskTwoHelperClass}
+				new TaskTwoHelperClass(wordsInSingleTweet.size());
+				TaskTwoHelperClass.calculateMedian();
 				wordsInSingleTweet.clear();
 			}
+
+			// Write the final updateable median into ft2.txt
+			FileWriter writer = new FileWriter(
+					"/Users/CharlesGao/Projects/cc/Insight Data Engineering - Coding Challenge/tweet_output/ft2.txt");
+			for (String str : TaskTwoHelperClass.finalUpdateableMedian) {
+				writer.write(str + "\t\n");
+			}
+			writer.close();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

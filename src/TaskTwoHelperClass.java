@@ -1,14 +1,21 @@
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class TaskTwoHelper {
+/**
+ * @author CharlesGao
+ * Function: This is a class that store the size(number of words) of each tweet
+ * and calculate the median of updated tweets
+ */
+public class TaskTwoHelperClass {
 
 	private int sizeOfEachTweet;
 	static double sum = 0;
 	static String roundedMedian;
 	static List<Integer> sizesOfEachTweet = new ArrayList<>();
+	//This ArrayList is the final updateable median that will be output to the ft2.txt
+	static List<String> finalUpdateableMedian = new ArrayList<>();
 
-	public TaskTwoHelper(int sizeOfEachTweet) {
+	public TaskTwoHelperClass(int sizeOfEachTweet) {
 		this.sizeOfEachTweet = sizeOfEachTweet;
 		sizesOfEachTweet.add(sizeOfEachTweet);
 	}
@@ -24,6 +31,7 @@ public class TaskTwoHelper {
 		roundedMedian = df.format(sum / sizesOfEachTweet.size());
 		// Make sure every time you reset the sum for next calculation
 		sum = 0;
+		finalUpdateableMedian.add(roundedMedian);
 		System.out.println(roundedMedian);
 		return roundedMedian;
 
