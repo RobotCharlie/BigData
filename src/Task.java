@@ -11,34 +11,35 @@ public class Task {
 	public static void main(String args[]) {
 
 		// Read input file
-		File file = new File(
-				"/Users/CharlesGao/Projects/cc/Insight Data Engineering - Coding Challenge/tweet_input/tweets.txt");
+		File file = new File("./tweet_input/tweets.txt");
 
 		/** THIS IS TASK 1 */
 
 		// Use a TreeSet<String> which will automatically sort the words
 		// in alphabetical order
-		// Set<String> wordsInTweet = new TreeSet<>();
-		// try {
-		// Scanner tokenizeScanner = new Scanner(new FileReader(file));
-		// tokenizeScanner.useDelimiter(" ");
-		// while (tokenizeScanner.hasNext()) {
-		// String singleWordInTweet = tokenizeScanner.next();
-		// if (!singleWordInTweet.equals("")) {
-		// // process only non-empty strings
-		// // convert to lower-case and then add to the set
-		// wordsInTweet.add(singleWordInTweet.toLowerCase());
-		// }
-		// }
-		// // Now wordsInTweet are in alphabetical order without duplicates,
-		// // print the wordsInTweet separating them in lines
-		// for (String eachWord : wordsInTweet) {
-		// System.out.print(eachWord + "\r\n");
-		// }
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		Set<String> wordsInTweet = new TreeSet<>();
+		try {
+			Scanner tokenizeScanner = new Scanner(new FileReader(file));
+			// Both space and return are taken as a beginning of new word, could
+			// add more restrain if needed
+			tokenizeScanner.useDelimiter(" |\\n");
+			while (tokenizeScanner.hasNext()) {
+				String singleWordInTweet = tokenizeScanner.next();
+				// Don't need to worry about the case of each word, they are all
+				// in lower case
+
+				wordsInTweet.add(singleWordInTweet);
+				System.out.println(wordsInTweet.toString());
+			}
+			// Now wordsInTweet are in alphabetical order without duplicates,
+			// print the wordsInTweet separating them in lines
+			for (String eachWord : wordsInTweet) {
+				// System.out.print(eachWord + "\r\n");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		/** THIS IS TASK 2 */
 
@@ -47,6 +48,7 @@ public class Task {
 			// Divided .txt file into several Tweets, and store them into
 			// ArrayList Tweets.
 			Scanner singleTweetScanner = new Scanner(new FileReader(file));
+			// Each tweet on a new line
 			singleTweetScanner.useDelimiter("\\n");
 			while (singleTweetScanner.hasNext()) {
 				String singleTweet = singleTweetScanner.next();
@@ -70,8 +72,7 @@ public class Task {
 			}
 
 			// Write the final updateable median into ft2.txt
-			FileWriter writer = new FileWriter(
-					"/Users/CharlesGao/Projects/cc/Insight Data Engineering - Coding Challenge/tweet_output/ft2.txt");
+			FileWriter writer = new FileWriter("./tweet_output/ft2.txt");
 			for (String str : TaskTwoHelperClass.finalUpdateableMedian) {
 				writer.write(str + "\t\n");
 			}

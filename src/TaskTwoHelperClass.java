@@ -32,7 +32,7 @@ public class TaskTwoHelperClass {
 		// Make sure every time you reset the sum for next calculation
 		sum = 0;
 		finalUpdateableMedian.add(roundedMedian);
-		System.out.println(roundedMedian);
+//		System.out.println(roundedMedian);
 		return roundedMedian;
 
 	}
