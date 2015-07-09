@@ -15,8 +15,9 @@ public class Task {
 
 		/** THIS IS TASK 1 */
 
-		// Use a TreeSet<String> which will automatically sort the words
-		// in alphabetical order
+		// Use a TreeMap<String,Integer> which will automatically sort the
+		// words(String) in alphabetical order, and could save the number of
+		// occurrence of each word as Value
 		TreeMap<String, Integer> wordsInTweet = new TreeMap<>();
 		try {
 			Scanner tokenizeScanner = new Scanner(new FileReader(file));
@@ -40,10 +41,11 @@ public class Task {
 			// separating them in lines and write the wordsInTweet in ft1.txt
 			FileWriter writer = new FileWriter("./tweet_output/ft1.txt");
 			for (String eachWord : wordsInTweet.keySet()) {
-				writer.write(eachWord + "\t\t\t\t" + wordsInTweet.get(eachWord)
-						+ "\r\n");
-				System.out.println(eachWord + "\t\t\t\t"
-						+ wordsInTweet.get(eachWord) + "\r\n");
+				String format = "%-50s\t%d\n";
+				String output = String.format(format, eachWord,
+						wordsInTweet.get(eachWord));
+				System.out.println(output);
+				writer.write(output);
 			}
 			writer.close();
 		} catch (Exception e) {
