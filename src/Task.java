@@ -17,7 +17,7 @@ public class Task {
 
 		// Use a TreeSet<String> which will automatically sort the words
 		// in alphabetical order
-		Set<String> wordsInTweet = new TreeSet<>();
+		TreeMap<String, Integer> wordsInTweet = new TreeMap<>();
 		try {
 			Scanner tokenizeScanner = new Scanner(new FileReader(file));
 			// Both space and return are taken as a beginning of new word, could
@@ -25,17 +25,27 @@ public class Task {
 			tokenizeScanner.useDelimiter(" |\\n");
 			while (tokenizeScanner.hasNext()) {
 				String singleWordInTweet = tokenizeScanner.next();
-				// Don't need to worry about the case of each word, they are all
-				// in lower case
-
-				wordsInTweet.add(singleWordInTweet);
-				System.out.println(wordsInTweet.toString());
+				// If and only if the key(word) has already been stored in
+				// TreeMap, then value(times of occurrence of the word) replaced
+				// and increased by 1, or we put a new key-value and set the
+				// value to 1 by default
+				if (wordsInTweet.keySet().contains(singleWordInTweet)) {
+					wordsInTweet.replace(singleWordInTweet,
+							wordsInTweet.get(singleWordInTweet) + 1);
+				} else {
+					wordsInTweet.put(singleWordInTweet, 1);
+				}
 			}
 			// Now wordsInTweet are in alphabetical order without duplicates,
-			// print the wordsInTweet separating them in lines
-			for (String eachWord : wordsInTweet) {
-				// System.out.print(eachWord + "\r\n");
+			// separating them in lines and write the wordsInTweet in ft1.txt
+			FileWriter writer = new FileWriter("./tweet_output/ft1.txt");
+			for (String eachWord : wordsInTweet.keySet()) {
+				writer.write(eachWord + "\t\t\t\t" + wordsInTweet.get(eachWord)
+						+ "\r\n");
+				System.out.println(eachWord + "\t\t\t\t"
+						+ wordsInTweet.get(eachWord) + "\r\n");
 			}
+			writer.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,6 +85,7 @@ public class Task {
 			FileWriter writer = new FileWriter("./tweet_output/ft2.txt");
 			for (String str : TaskTwoHelperClass.finalUpdateableMedian) {
 				writer.write(str + "\t\n");
+				System.out.println(str);
 			}
 			writer.close();
 
