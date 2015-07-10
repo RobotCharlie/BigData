@@ -1,4 +1,4 @@
-# CharlesLoveBigData
+# CharlesLovesBigData
 
 #####*This is the Code Challenge of [Insight Data Engineering Fellows Program](http://insightdataengineering.com/), this tool could help analyze the community of Twitter users.*#####
 
