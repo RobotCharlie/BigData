@@ -2,9 +2,9 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 /**
- * @author CharlesGao Function: This is a class that store the size(number of
- *         words) of every single Tweet in order to calculate the median of
- *         updateable Tweets
+ * @author CharlesGao Function(Only For TASK 2): This is a Helper class that
+ *         help TASK2 to store the size(number of words) of every single Tweet
+ *         in order to calculate the median of updateable Tweets
  */
 public class MedianCalculator {
 
@@ -12,8 +12,10 @@ public class MedianCalculator {
 	private static double sum = 0;
 	private static String roundedMedian;
 	static List<Integer> sizesOfEachTweet = new ArrayList<>();
-	// This ArrayList is the final updateable median that will be output to the
-	// ft2.txt
+	/*
+	 * This ArrayList is the final updateable median that will be output to the
+	 * ft2.txt
+	 */
 	static List<String> finalUpdateableMedian = new ArrayList<>();
 
 	public MedianCalculator(int sizeOfEachTweet) {

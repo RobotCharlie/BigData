@@ -26,21 +26,27 @@ public class Task {
 		 * been tweeted.
 		 */
 
-		// Use a TreeMap<String,Integer> which will automatically sort the
-		// words(String) as Keys in alphabetical order, and could save the
-		// number of occurrence of each word as Value
+		/*
+		 * Use a TreeMap<String,Integer> which will automatically sort the
+		 * words(String) as Keys in alphabetical order, and could save the
+		 * number of occurrence of each word as Value
+		 */
 		TreeMap<String, Integer> wordsInTweet = new TreeMap<>();
 		try {
 			Scanner tokenizeScanner = new Scanner(new FileReader(fileInput));
-			// Both space and return are taken as a beginning of a new word,
-			// could add more constrain if needed
+			/*
+			 * Both space and return are taken as a beginning of a new word,
+			 * could add more constrain if needed
+			 */
 			tokenizeScanner.useDelimiter(" |\\n");
 			while (tokenizeScanner.hasNext()) {
 				String singleWordInTweet = tokenizeScanner.next();
-				// If and only if the Key(word) has already been stored in
-				// TreeMap, then value(times of occurrence of the word) replaced
-				// and increased by 1, or we put a new key-value and set the
-				// value to 1 by default
+				/*
+				 * If and only if the Key(word) has already been stored in
+				 * TreeMap, then value(times of occurrence of the word) replaced
+				 * and increased by 1, or we put a new key-value and set the
+				 * value to 1 by default
+				 */
 				if (wordsInTweet.keySet().contains(singleWordInTweet)) {
 					wordsInTweet.replace(singleWordInTweet,
 							wordsInTweet.get(singleWordInTweet) + 1);
@@ -48,8 +54,10 @@ public class Task {
 					wordsInTweet.put(singleWordInTweet, 1);
 				}
 			}
-			// Now wordsInTweet are in alphabetical order without duplicates,
-			// separating them in lines and write the wordsInTweet in ft1.txt
+			/*
+			 * Now wordsInTweet are in alphabetical order without duplicates, //
+			 * separating them in lines and write the wordsInTweet in ft1.txt
+			 */
 			FileWriter writer = new FileWriter(fileOutput1);
 			for (String eachWord : wordsInTweet.keySet()) {
 				String format = "%-50s\t%d\n";
@@ -69,8 +77,10 @@ public class Task {
 		 * tweet, and update this median as tweets come in.
 		 */
 
-		// Divide all the Tweets that in the .txt file into several single
-		// Tweets, and store them into ArrayList.
+		/*
+		 * Divide all the Tweets that in the .txt file into several single
+		 * Tweets, and store them into ArrayList
+		 */
 		List<String> Tweets = new ArrayList<>();
 		try {
 			Scanner singleTweetScanner = new Scanner(new FileReader(fileInput));
@@ -80,8 +90,10 @@ public class Task {
 				String singleTweet = singleTweetScanner.next();
 				Tweets.add(singleTweet);
 			}
-			// Then divide every single Tweet into words, we use TreeSet to
-			// avoid multi-store of same words
+			/*
+			 * Then divide every single Tweet into words, we use TreeSet to
+			 * avoid multi-store of same words
+			 */
 			Set<String> wordsInSingleTweet = new TreeSet<>();
 			for (String eachTweet : Tweets) {
 				Scanner singleTweet = new Scanner(eachTweet);
@@ -89,8 +101,10 @@ public class Task {
 				while (singleTweet.hasNext()) {
 					wordsInSingleTweet.add(singleTweet.next());
 				}
-				// Pass and save the size of each Tweet to a ArrayList in {@link
-				// MedianCalculator}
+				/*
+				 * Pass and save the size of each Tweet to a ArrayList in {@link
+				 * MedianCalculator}
+				 */
 				new MedianCalculator(wordsInSingleTweet.size());
 				MedianCalculator.calculateMedian();
 				wordsInSingleTweet.clear();
